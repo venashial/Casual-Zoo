@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">Casual Zoo</h1>
 
-A discord bot to explore 100+ species of animals with randomized pictures in a competitive style game
+A Discord bot to explore 100+ species of animals with randomized pictures in a competitive style game
 
 ## Images
 <img src="assets/screenshots/1.png" width="650">

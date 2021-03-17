@@ -119,7 +119,6 @@ bot.on("message", (msg) => {
 
         const unknownSpecies = animals.length - knownSpecies;
 
-        console.log(embeds);
         msg.channel.send(
           `**${knownSpecies}** known species\n**${unknownSpecies}** undiscovered species\n**${totalFound}** animals found`
         );
@@ -198,7 +197,7 @@ bot.on("message", (msg) => {
                     count = found[animal.name] + "th";
                 }
                 msg.channel.send(
-                  `You discovered a stray ${animal.name} and caught it!` + ((animal.found > 1) ? `\nThis is your ${count} ${animal.name}.` : `\n**This is very first ${animal.name} to be found.**`) + ` :${animal.emoji}:`,
+                  `You discovered a stray ${animal.name} and caught it!` + ((animal.found > 1) ? `\nThis is your ${count} ${animal.name}.` : `\n**This is the very first ${animal.name} to be found.**`) + ` :${animal.emoji}:`,
                   animalEmbed
                 );
               } else {
