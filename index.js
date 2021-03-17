@@ -65,6 +65,7 @@ bot.on("message", (msg) => {
       ],
       ["`zoo leaderboard`", "who found how many animals"],
       ["`zoo (my || @person) animals`", "your own animals"],
+      ["`zoo code`", "source code of Casual Zoo"],
       ["`zoo help`", "this helpful message"],
     ];
 
@@ -377,6 +378,12 @@ bot.on("message", (msg) => {
         msg.channel.send(`You are in ${place} place.`, listEmbed);
       }
     });
+    blinkStatus(msg.author.username);
+  }  else if (
+    words[0] == "zoo" &&
+    (words[1] == "source" || words[1] == "code" || words[1] == "author")
+  ) {
+    msg.channel.send('Casual Zoo is licensed under the MIT license and its source code can be found here:\nhttps://github.com/venashial/Casual-Zoo');
     blinkStatus(msg.author.username);
   }
 });
