@@ -1,0 +1,17 @@
+{
+  "name": "casual-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord-paginationembed": "^2.1.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "sqlite3": "^5.0.2"
+  }
+}
