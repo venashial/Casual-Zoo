@@ -10,7 +10,7 @@ db.animal = new sqlite3.Database(DBSOURCE, (err) => {
     console.error(err.message);
     throw err;
   } else {
-    console.log("Connected to the SQLite database.");
+    console.log("Connected to the animal table.");
     db.animal.run(
       `CREATE TABLE animal (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,7 +37,7 @@ db.user = new sqlite3.Database(DBSOURCE, (err) => {
     console.error(err.message);
     throw err;
   } else {
-    console.log("Connected to the SQLite database.");
+    console.log("Connected to the user table.");
     db.animal.run(
       `CREATE TABLE user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
