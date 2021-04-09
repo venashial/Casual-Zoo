@@ -166,7 +166,7 @@ bot.on("message", (msg) => {
     (words[0] == "zoo" && words[1] == "find")
     || (words[0] == "search" && words[1] == "for")
   ) {
-    const query = (words[1] == "find" || words[1] == "for") ? words[2] : words[3];
+    const query = (words[2] == "a" || words[2] == "an") ? words[3] : words[2];
     db.animal.all(
       "select * from animal where name = ?",
       [query],
@@ -177,7 +177,7 @@ bot.on("message", (msg) => {
           animal.found++;
           const animal_image =
             "https://loremflickr.com/320/240/" +
-            animal.url +
+            animal.url.replace(" ", "") +
             "?" +
             Math.random().toString(36).substring(7);
           const animalEmbed = new Discord.MessageEmbed()

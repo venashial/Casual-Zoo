@@ -20,7 +20,7 @@ A Discord bot to explore 100+ species of animals with randomized pictures in a c
 npm install
 ```
 
-3. Rename `.env.example` to `.env` and add your own bot's token and application/client id
+3. Duplicate `.env.example` to `.env` and add your own bot's token and application/client id
 ```java
 TOKEN=YOUR TOKEN HERE
 APPLICATION_ID=YOUR APPLICATION ID HERE
