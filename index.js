@@ -5,6 +5,7 @@ const Pagination = require("discord-paginationembed");
 const bot = new Discord.Client(); // This creates a variable called bot from the Client class in the Discord variable
 require('dotenv').config()
 const TOKEN = process.env.TOKEN;
+const APPLICATION_ID = process.env.APPLICATION_ID;
 
 const db = require("./database.js");
 
@@ -43,6 +44,7 @@ function blinkStatus(name) {
 bot.on("message", (msg) => {
   const words = msg.content.toLowerCase().split(" ");
 
+  // HELP
   if (
     msg.content.toLowerCase().startsWith("zoo help") ||
     msg.content.toLowerCase().startsWith("zoo guide") ||
@@ -64,8 +66,9 @@ bot.on("message", (msg) => {
         "list the known lost species and how many have been found",
       ],
       ["`zoo leaderboard`", "who found how many animals"],
-      ["`zoo (my || @person) animals`", "your own animals"],
+      ["`zoo (my || @person) animals`", "someone's own animals"],
       ["`zoo code`", "source code of Casual Zoo"],
+      ["`zoo invite`", "get an invite link"],
       ["`zoo help`", "this helpful message"],
     ];
 
@@ -78,7 +81,20 @@ bot.on("message", (msg) => {
       commandsEmbed
     );
     blinkStatus(msg.author.username);
-  } else if (msg.content.toLowerCase().startsWith("zoo animals")) {
+  } if (
+    msg.content.toLowerCase().startsWith("zoo invite") ||
+    msg.content.toLowerCase().startsWith("zoo add") ||
+    msg.content.toLowerCase().startsWith("zoo link")
+  ) {
+    const total = bot.guilds.cache.size
+    const total_message = total == 1 ? total + " server" : total + " servers"
+    msg.channel.send(
+      `I think some of my animals escaped into other servers.\nInvite me so I can help you find them there too.\n<https://discord.com/oauth2/authorize?client_id=${APPLICATION_ID}&permissions=305216&scope=bot>\n\nI'm in **${total_message}** currently.`
+    );
+    blinkStatus(msg.author.username);
+  }
+  // INVITE
+  else if (msg.content.toLowerCase().startsWith("zoo animals")) {
     db.animal.all("select * from animal", [], (err, animals) => {
       if (err) throw err;
 
@@ -141,7 +157,9 @@ bot.on("message", (msg) => {
     });
 
     blinkStatus(msg.author.username);
-  } else if (
+  }
+  // FIND ANIMAL
+  else if (
     ((words[0] == "search" || words[0] == "look") &&
       words[1] == "for" &&
       (words[2] == "a" || words[2] == "an")) ||
@@ -229,7 +247,9 @@ bot.on("message", (msg) => {
       }
     );
     blinkStatus(msg.author.username);
-  } else if (words[0] == "zoo" && words[2] == "animals") {
+  }
+  // PERSONAL ANIMALS
+  else if (words[0] == "zoo" && words[2] == "animals") {
     const selectedUserID =
       words[1] == "my" || words[1] == "own"
         ? msg.author.id
@@ -320,7 +340,9 @@ bot.on("message", (msg) => {
       }
     );
     blinkStatus(msg.author.username);
-  } else if (
+  }
+  // LEADERBOARD
+  else if (
     words[0] == "zoo" &&
     (words[1] == "rank" || words[1] == "leaderboard" || words[1] == "lb")
   ) {
@@ -379,7 +401,9 @@ bot.on("message", (msg) => {
       }
     });
     blinkStatus(msg.author.username);
-  }  else if (
+  } 
+  // SOURCE CODE
+  else if (
     words[0] == "zoo" &&
     (words[1] == "source" || words[1] == "code" || words[1] == "author")
   ) {

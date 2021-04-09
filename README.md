@@ -20,9 +20,10 @@ A Discord bot to explore 100+ species of animals with randomized pictures in a c
 npm install
 ```
 
-3. Rename `.env.example` to `.env` and add your own bot's token
+3. Rename `.env.example` to `.env` and add your own bot's token and application/client id
 ```java
 TOKEN=YOUR TOKEN HERE
+APPLICATION_ID=YOUR APPLICATION ID HERE
 ```
 
 1. Add animals to the `animal` table in the `db.sqlite` programmatically using the commented out code in `database.js` or with the sqlite-cli:
@@ -31,4 +32,4 @@ sqlite> INSERT INTO animal (name, url, emoji, found) VALUES ('monkey','monkey,an
 ```
 
 ## Disclaimer
-Images are requested from [loremflickr.com](https://loremflickr.com/) and queries are occasionally misinterpreted resulting in unrelated results. You can mitigate this by created specific `animal.url`'s such as `owl,bird` instead of just `owl`.
+Images are requested from [loremflickr.com](https://loremflickr.com/) and queries are occasionally misinterpreted resulting in unrelated results. You can mitigate this by creating more specific `animal.url`'s such as `owl,bird` instead of just `owl`.
